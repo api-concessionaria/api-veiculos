@@ -5,14 +5,10 @@ import br.ufpb.dcx.apiVeiculos.mapper.VeiculoMapper;
 import br.ufpb.dcx.apiVeiculos.model.Veiculo;
 import br.ufpb.dcx.apiVeiculos.service.VeiculoService;
 import jakarta.validation.Valid;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
