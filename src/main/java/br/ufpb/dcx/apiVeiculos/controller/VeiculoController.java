@@ -1,6 +1,7 @@
 package br.ufpb.dcx.apiVeiculos.controller;
 
 import br.ufpb.dcx.apiVeiculos.dto.VeiculoDTO;
+import br.ufpb.dcx.apiVeiculos.dto.VeiculoResponseDTO;
 import br.ufpb.dcx.apiVeiculos.mapper.VeiculoMapper;
 import br.ufpb.dcx.apiVeiculos.model.Veiculo;
 import br.ufpb.dcx.apiVeiculos.service.VeiculoService;
@@ -23,7 +24,7 @@ public class VeiculoController {
     }
 
     @GetMapping(path = "/veiculos")
-    public List<VeiculoDTO> listaTodosVeiculos() {
+    public List<VeiculoResponseDTO> listaTodosVeiculos() {
         return veiculoService.getVeiculos()
                 .stream()
                 .map(veiculo -> veiculoMapper.mapToDTO(veiculo))
@@ -31,7 +32,7 @@ public class VeiculoController {
     }
 
     @GetMapping(path = "/veiculos/{veiculoID}")
-    public VeiculoDTO listaVeiculo(@PathVariable Long veiculoID) {
+    public VeiculoResponseDTO listaVeiculo(@PathVariable Long veiculoID) {
         Veiculo veiculo = veiculoService.getVeiculoById(veiculoID);
         return veiculoMapper.mapToDTO(veiculo);
 
@@ -45,14 +46,14 @@ public class VeiculoController {
 
     @PostMapping(path = "/veiculos")
     @ResponseStatus(HttpStatus.CREATED)
-    public VeiculoDTO adicionarVeiculo(@Valid @RequestBody VeiculoDTO veiculoDTO) {
+    public VeiculoResponseDTO adicionarVeiculo(@Valid @RequestBody VeiculoDTO veiculoDTO) {
         Veiculo veiculo = veiculoMapper.mapToEntity(veiculoDTO);
         veiculoService.adicionarVeiculo(veiculo);
         return veiculoMapper.mapToDTO(veiculo);
     }
 
     @PutMapping(path = "/veiculos/{veiculoID}")
-    public VeiculoDTO atualizaVeiculo(@Valid @PathVariable Long veiculoID, @RequestBody VeiculoDTO veiculoDTO) {
+    public VeiculoResponseDTO atualizaVeiculo(@Valid @PathVariable Long veiculoID, @RequestBody VeiculoDTO veiculoDTO) {
         Veiculo veiculo = veiculoMapper.mapToEntity(veiculoDTO);
         veiculoService.atualizarVeiculo(veiculoID, veiculo);
         return veiculoMapper.mapToDTO(veiculo);

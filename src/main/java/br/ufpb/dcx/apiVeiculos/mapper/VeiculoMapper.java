@@ -1,6 +1,7 @@
 package br.ufpb.dcx.apiVeiculos.mapper;
 
 import br.ufpb.dcx.apiVeiculos.dto.VeiculoDTO;
+import br.ufpb.dcx.apiVeiculos.dto.VeiculoResponseDTO;
 import br.ufpb.dcx.apiVeiculos.model.Veiculo;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -13,8 +14,8 @@ public class VeiculoMapper {
         this.modelMapper = modelMapper;
     }
 
-    public VeiculoDTO mapToDTO(Veiculo veiculo) {
-        return modelMapper.map(veiculo, VeiculoDTO.class);
+    public VeiculoResponseDTO mapToDTO(Veiculo veiculo) {
+        return modelMapper.map(veiculo, VeiculoResponseDTO.class);
     }
 
     public Veiculo mapToEntity(VeiculoDTO dto) {
